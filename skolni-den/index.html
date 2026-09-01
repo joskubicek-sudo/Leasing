@@ -160,7 +160,7 @@ footer{text-align:center;font-size:11px;color:var(--dim);letter-spacing:.1em;mar
 
   <section id="tab-kviz" hidden>
     <h2 class="nadpis2">Písemka</h2>
-    <p class="podnadpis">Deset otázek, žádná časomíra, opisovat se smí. Po každé odpovědi se dozvíte, jak to je.</p>
+    <p class="podnadpis">Jedenáct otázek, žádná časomíra, opisovat se smí. Po každé odpovědi se dozvíte, jak to je.</p>
     <div class="progres" id="progres"></div>
     <div id="kviz-telo"></div>
   </section>
@@ -201,14 +201,14 @@ var VINA=[
   chipy:["Monção","Alvarinho","10–12 °C"],
   popis:"Nejslavnější portugalské Alvarinho, z vinic kolem klasicistního paláce nedaleko španělské hranice. Broskev, citrusová kůra, minerální tah a slaný závěr. Etalon, podle kterého se ostatní poměřují.",
   par:"Mořské plody, grilovaná ryba, sushi"},
- {n:4,nazev:"Soalheiro Primeiras Alvarinho",puvod:"Quinta de Soalheiro · Melgaço, Minho",
-  chipy:["Melgaço","Alvarinho","10–12 °C"],
-  popis:"Soalheiro vysadilo v Melgaçu Alvarinho jako první — píše se rok 1974. Tahle řada jde ze zakladatelských vinic: hutnější, vážnější a delší než mladé Alvarinho, které znáte z terasy.",
+ {n:4,nazev:"Soalheiro Primeiras Alvarinho",puvod:"Quinta de Soalheiro · Melgaço · 13 %",
+  chipy:["Monção e Melgaço","Alvarinho","staré vinice","10–12 °C"],
+  popis:"Z parcely vysazené roku 1974, která dala celému domu jméno, doplněné výběrem vinic starších třiceti let. Patnáct procent kvasí v dubu — ve starých sudech, foudru a kádích — a víno zraje půl roku na kalech s bâtonnage. Zralé ovoce, máslový tón, ale pořád vibrující.",
   par:"Pečená ryba, drůbež, zrající kozí sýr"},
- {n:5,nazev:"Vinha do Contador branco",puvod:"bílé z jedné vinice",
-  chipy:["single vineyard","bílé","10–12 °C"],
-  popis:"Víno z jediné parcely, která mu dala jméno. Po dvou Alvarinhech ukáže portugalská bílá jinou tvář — je to dobrý moment na srovnání: co dělá odrůda a co dělá místo.",
-  par:"Bílé maso, houby, tvrdé sýry",
+ {n:5,nazev:"Vinha do Contador branco",puvod:"Paço dos Cunhas de Santar · DOC Dão",
+  chipy:["Dão","Encruzado + Malvasia + Cerceal","bio","10–12 °C"],
+  popis:"Sedm hektarů v bio režimu od roku 2007, uvnitř statku Paço dos Cunhas de Santar — jedna z nejcharakternějších vinic Dãa. Encruzado, Malvasia a Cerceal, krátce v novém francouzském dubu s bâtonnage. Bílé ovoce, vanilka, lískový oříšek, plná ústa.",
+  par:"Bílé maso, houby, tvrdé sýry · návrat do Dãa po sklenici č. 2",
   pauza:"přestávka · sklenice na červené, voda"},
  {n:6,blok:"Třetí hodina",blokPod:"červená z Doura · 16–18 °C",
   nazev:"Crasto Tinta Roriz",puvod:"Quinta do Crasto · DOC Douro",
@@ -234,6 +234,8 @@ var OTAZKY=[
   v:"Domov Alvarinha je kolem řeky Minho — na portugalské straně Monção e Melgaço, na španělské Galicie, kde se stejné odrůdě říká Albariño."},
  {o:"Do které vinařské oblasti patří Melgaço a Monção?",a:["Vinho Verde","Douro","Bairrada","Setúbal"],
   v:"Monção e Melgaço je subregion Vinho Verde — nejteplejší a nejsušší kout jinak deštivého severu, proto tam Alvarinho dozraje."},
+ {o:"Která bílá odrůda platí za nejlepší v regionu Dão?",a:["Encruzado","Alvarinho","Loureiro","Baga"],
+  v:"Encruzado. Dává vína s tělem a kyselinou zároveň, dobře snese dub — proto se mu říká portugalské Chardonnay. Alvarinho patří severu, Baga je červená z Bairrady."},
  {o:"Jak se odrůdě Tinta Roriz říká ve Španělsku?",a:["Tempranillo","Garnacha","Monastrell","Mencía"],
   v:"Jedna odrůda, tři jména: Tinta Roriz v Douru, Aragonez v Alenteju, Tempranillo ve Španělsku."},
  {o:"Co portugalsky znamená „xisto“?",a:["Břidlice","Žula","Písek","Svah"],
@@ -251,9 +253,9 @@ var OTAZKY=[
 var ZNAMKY=[
  [0,"5","Nedostatečně","Večer teprve začal a chuť si pamatuje víc než hlava. Reparát máte ve sklenici."],
  [4,"4","Dostatečně","Prošli jste. Mapu Portugalska už máte v hlavě rozkreslenou."],
- [6,"3","Dobře","Slušný průměr třídy. Sever od jihu rozeznáte spolehlivě."],
- [8,"2","Chvalitebně","Tohle už není náhoda — orientujete se v regionech i ve sklepě."],
- [10,"1","Výborně","Plný počet. Příští degustaci klidně veďte sami."]
+ [7,"3","Dobře","Slušný průměr třídy. Sever od jihu rozeznáte spolehlivě."],
+ [9,"2","Chvalitebně","Tohle už není náhoda — orientujete se v regionech i ve sklepě."],
+ [11,"1","Výborně","Plný počet. Příští degustaci klidně veďte sami."]
 ];
 
 var stav={body:{},pozn:{},kviz:null};
@@ -326,7 +328,7 @@ function konecKvizu(){
   stav.kviz=spravne; uloz();
   var z=znamka(spravne);
   elProg.innerHTML=OTAZKY.map(function(){return '<i class="done"></i>';}).join("");
-  elTelo.innerHTML='<div class="skore"><div class="cislice">'+spravne+'/10</div>'
+  elTelo.innerHTML='<div class="skore"><div class="cislice">'+spravne+'/'+OTAZKY.length+'</div>'
     +'<div class="znamka">'+esc(z[1])+'</div>'
     +'<div class="hodnost">'+esc(z[2])+'</div><p>'+esc(z[3])+'</p></div>'
     +'<button class="tlac-sek" type="button" id="znovu">Zkusit znovu</button>';
@@ -350,7 +352,7 @@ function kresliVecer(){
   }
   if(typeof stav.kviz==="number"){
     var z=znamka(stav.kviz);
-    h+='<h3 class="nadpis2">Písemka</h3><div class="radek"><div class="poz">'+esc(z[1])+'</div><div class="jm">'+esc(z[2])+'</div><div class="bd">'+stav.kviz+'/10</div></div>';
+    h+='<h3 class="nadpis2">Písemka</h3><div class="radek"><div class="poz">'+esc(z[1])+'</div><div class="jm">'+esc(z[2])+'</div><div class="bd">'+stav.kviz+'/'+OTAZKY.length+'</div></div>';
   }
   el.innerHTML=h;
 }
@@ -361,7 +363,7 @@ document.getElementById("kopiruj").addEventListener("click",function(){
       .forEach(function(v,i){
         t+=(i+1)+". "+v.nazev+" — "+stav.body[v.n]+"/5"+(stav.pozn[v.n]?"  ("+stav.pozn[v.n]+")":"")+"\n";
       });
-  if(typeof stav.kviz==="number") t+="\nPísemka: "+stav.kviz+"/10 — známka "+znamka(stav.kviz)[1]+" ("+znamka(stav.kviz)[2]+")";
+  if(typeof stav.kviz==="number") t+="\nPísemka: "+stav.kviz+"/"+OTAZKY.length+" — známka "+znamka(stav.kviz)[1]+" ("+znamka(stav.kviz)[2]+")";
   var btn=this;
   function hotovo(){btn.textContent="Zkopírováno";setTimeout(function(){btn.textContent="Zkopírovat souhrn";},1800);}
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(hotovo,function(){});}
