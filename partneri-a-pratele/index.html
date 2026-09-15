@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#26090F">
+<title>Degustační menu — LIKOR, obchodní partneři a přátelé</title>
+<meta name="description" content="Degustační menu, 15. září 2026. LIKOR, obchodní partneři a přátelé. Uvítací sklenka a sedm vín od severu Portugalska po Madeiru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --ground:#26090F; --surface:#3A1119; --surface-2:#4A1721;
+  --line:#6B1F2A; --line-soft:rgba(217,184,118,.22);
+  --gold:#D9B876; --bronze:#B8863B; --cream:#F5EFE6;
+  --muted:#C6A38C; --dim:#9C7A6B;
+  --ok:#9CC08A; --no:#D9928E;
+  --serif:"Libre Baskerville",Georgia,"Times New Roman",serif;
+  --sans:"Poppins","Segoe UI",system-ui,sans-serif;
+  --pad:18px; --r:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:0 var(--pad) 120px}
+header{background:linear-gradient(180deg,#4A1721 0%,#2E0C13 100%);border-bottom:2px solid var(--bronze);padding:26px var(--pad) 22px;text-align:center}
+.mark{font-size:10px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;font-weight:500}
+h1{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.2;margin:10px 0 6px;color:#fff;text-wrap:balance}
+.claim{font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--gold);margin:8px 0 5px;text-wrap:balance}
+.dateline{font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(30,8,13,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line-soft);display:flex;padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;background:none;border:0;color:var(--dim);font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:15px 4px 16px;cursor:pointer;border-top:2px solid transparent;transition:color .18s}
+nav button[aria-selected="true"]{color:var(--gold);border-top-color:var(--gold)}
+nav button:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}
+
+.blok{display:flex;align-items:baseline;gap:12px;margin:30px 0 14px}
+.blok::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.blok span{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);font-weight:600;white-space:nowrap}
+.blok em{font-style:normal;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.karta{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:16px 16px 14px;margin-bottom:12px}
+.hlava{display:flex;gap:12px;align-items:flex-start}
+.cislo{flex:0 0 30px;height:30px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:13px;color:var(--gold)}
+.cislo.uvit{font-size:15px}
+.nazev{font-family:var(--serif);font-weight:700;font-size:16.5px;color:#fff;line-height:1.3;margin:2px 0 3px}
+.puvod{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--muted)}
+.chipy{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 10px}
+.chip{font-size:10.5px;letter-spacing:.05em;color:var(--gold);border:1px solid var(--line-soft);border-radius:999px;padding:3px 9px}
+.popis{font-size:14px;color:#EFE3D8;margin:0 0 10px}
+.par{font-size:12.5px;color:var(--muted)}
+.par b{color:var(--bronze);font-weight:600;letter-spacing:.06em;font-size:10.5px;text-transform:uppercase}
+.kup{display:inline-block;margin-top:10px;font-size:11.5px;letter-spacing:.08em;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line-soft);padding-bottom:1px}
+.kup:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.body-row{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line-soft)}
+.body-row .lbl{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.body-row .slovne{font-size:11.5px;color:var(--gold);min-width:0}
+.sklenky{display:flex;gap:4px;margin-left:auto}
+.sklenky button{background:none;border:0;padding:3px;cursor:pointer;font-size:19px;line-height:1;filter:grayscale(1);opacity:.35;transition:opacity .15s,filter .15s}
+.sklenky button.on{filter:none;opacity:1}
+.sklenky button:focus-visible{outline:2px solid var(--gold);outline-offset:1px;border-radius:4px}
+textarea{width:100%;margin-top:10px;background:var(--ground);color:var(--cream);border:1px solid var(--line-soft);border-radius:9px;padding:9px 11px;font-family:var(--sans);font-size:13px;font-weight:300;resize:vertical;min-height:44px}
+textarea:focus{outline:1px solid var(--gold)}
+.pauza{text-align:center;font-family:var(--serif);font-style:italic;font-size:13px;color:var(--bronze);margin:18px 0;padding:11px;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+
+.legenda{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:var(--r);margin:22px 0 4px}
+.legenda summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:10px}
+.legenda summary::-webkit-details-marker{display:none}
+.legenda summary .t{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500;flex:1}
+.legenda summary .s{color:var(--gold);transition:transform .18s}
+.legenda[open] summary .s{transform:rotate(90deg)}
+.legenda summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;border-radius:var(--r)}
+.legenda .in{padding:0 16px 14px;font-size:13px;color:#EFE3D8}
+.legenda .in p{margin:0 0 10px}
+.stupne{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:4px 0 12px;align-items:baseline}
+.stupne .g{white-space:nowrap;font-size:13px;letter-spacing:1px}
+.stupne .d b{font-weight:500;color:#fff}
+.stupne .d{color:var(--muted);font-size:12.5px}
+
+.progres{display:flex;gap:4px;margin:26px 0 18px}
+.progres i{flex:1;height:3px;border-radius:2px;background:rgba(217,184,118,.18)}
+.progres i.done{background:var(--gold)}
+.kolik{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 8px}
+.otazka{font-family:var(--serif);font-size:18px;line-height:1.4;color:#fff;margin:0 0 18px;text-wrap:balance}
+.odpovedi{display:flex;flex-direction:column;gap:9px}
+.odpovedi button{text-align:left;background:var(--surface);color:var(--cream);border:1px solid var(--line-soft);border-radius:11px;padding:13px 15px;font-family:var(--sans);font-size:14px;font-weight:300;cursor:pointer;transition:border-color .15s,background .15s}
+.odpovedi button:hover:not(:disabled){border-color:var(--gold)}
+.odpovedi button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.odpovedi button.spravne{border-color:var(--ok);background:rgba(156,192,138,.13);color:#EAF3E4}
+.odpovedi button.spatne{border-color:var(--no);background:rgba(217,146,142,.13);color:#F6E3E2}
+.odpovedi button:disabled{cursor:default}
+.vysvetleni{margin-top:16px;padding:14px 15px;background:var(--surface-2);border-left:2px solid var(--bronze);border-radius:0 9px 9px 0;font-size:13.5px;color:#EFE3D8}
+.vysvetleni b{color:#fff;font-weight:500}
+.dalsi{display:block;width:100%;margin-top:16px;padding:14px;border:0;border-radius:11px;background:var(--gold);color:#2E0C13;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.dalsi:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.skore{text-align:center;padding:34px 0 10px}
+.skore .cislice{font-family:var(--serif);font-size:52px;color:var(--gold);line-height:1}
+.skore .hodnost{font-family:var(--serif);font-style:italic;font-size:20px;color:#fff;margin-top:14px}
+.skore p{color:var(--muted);font-size:13.5px;max-width:38ch;margin:10px auto 0}
+
+.zebricek{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.radek{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line-soft);border-radius:11px;padding:12px 14px}
+.radek.prvni{border-color:var(--bronze);background:var(--surface-2)}
+.radek .poz{font-family:var(--serif);font-size:15px;color:var(--gold);width:22px;font-variant-numeric:tabular-nums;flex:0 0 auto}
+.radek .jm{font-family:var(--serif);font-size:14.5px;color:#fff;flex:1;line-height:1.3;min-width:0}
+.radek .jm small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--dim);margin-top:2px}
+.radek .bd{font-size:12px;color:var(--muted);white-space:nowrap}
+.radek a.mini{flex:0 0 auto;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#2E0C13;background:var(--gold);text-decoration:none;border-radius:8px;padding:7px 10px}
+.radek a.mini:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.prazdno{color:var(--dim);font-size:13.5px;text-align:center;padding:30px 14px;font-style:italic}
+.nadpis2{font-family:var(--serif);font-size:19px;color:#fff;margin:30px 0 4px}
+.podnadpis{font-size:12.5px;color:var(--dim);margin:0 0 14px}
+.tlac-sek{display:block;width:100%;margin-top:14px;padding:13px;border:1px solid var(--bronze);border-radius:11px;background:none;color:var(--gold);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.tlac-sek:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.cta{background:linear-gradient(180deg,#4A1721 0%,#33101a 100%);border:1px solid var(--bronze);border-radius:var(--r);padding:20px 18px;margin:26px 0 6px;text-align:center}
+.cta .nad{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);font-weight:600;margin-bottom:6px}
+.cta h3{font-family:var(--serif);font-size:17px;color:#fff;margin:0 0 7px;line-height:1.3;text-wrap:balance}
+.cta p{font-size:13px;color:var(--muted);margin:0 0 15px}
+.cta a{display:inline-block;background:var(--gold);color:#2E0C13;text-decoration:none;padding:12px 26px;border-radius:10px;font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.cta a:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+footer{text-align:center;font-size:11px;color:var(--dim);letter-spacing:.1em;margin-top:34px}
+footer a{color:var(--gold);text-decoration:none;letter-spacing:.1em}
+[hidden]{display:none !important}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark">LIKOR s.r.o.</div>
+  <h1>LIKOR, obchodní partneři a přátelé</h1>
+  <div class="claim">Uvítací sklenka a sedm vín · od Minha po Madeiru</div>
+  <div class="dateline">úterý 15. září 2026</div>
+</header>
+
+<div class="wrap">
+  <section id="tab-vina"></section>
+
+  <section id="tab-kviz" hidden>
+    <h2 class="nadpis2">Kvíz</h2>
+    <p class="podnadpis">Čtrnáct otázek k tomu, co je dnes ve sklenici. Žádná časomíra, žádná ostuda. Po každé odpovědi se dozvíte, jak to je.</p>
+    <div class="progres" id="progres"></div>
+    <div id="kviz-telo"></div>
+  </section>
+
+  <section id="tab-vecer" hidden>
+    <h2 class="nadpis2">Můj večer</h2>
+    <p class="podnadpis">Vína seřazená podle vašich bodů a výsledek kvízu. Nic se nikam neodesílá — vše zůstává v tomto telefonu.</p>
+    <div id="zebricek"></div>
+    <button class="tlac-sek" id="kopiruj" type="button">Zkopírovat souhrn</button>
+    <footer><a href="https://www.portske.cz" target="_blank" rel="noopener">portske.cz</a></footer>
+  </section>
+</div>
+
+<nav role="tablist">
+  <button role="tab" aria-selected="true" data-tab="vina">Vína</button>
+  <button role="tab" aria-selected="false" data-tab="kviz">Kvíz</button>
+  <button role="tab" aria-selected="false" data-tab="vecer">Můj večer</button>
+</nav>
+
+<script>
+(function(){
+"use strict";
+var KLIC="dpv-menu-20260915-partneri";
+var AKCE="LIKOR, obchodní partneři a přátelé — 15. 9. 2026";
+var ESHOP="https://www.portske.cz";
+
+/* url = stránka vína na portske.cz. Přímé vložení do košíku e-shop přes odkaz neumí (košík běží přes API). */
+var VINA=[
+ {n:0,uvit:true,blok:"Na uvítanou",blokPod:"8–10 °C",
+  nazev:"Casa Santos Lima Portuga Branco",puvod:"Casa Santos Lima · Lisabon · 9,5 %",
+  chipy:["Lisabon","lehké bílé","8–10 °C"],
+  popis:"Lehké, svěží bílé s nízkým alkoholem — přesně to, co má být v ruce, když se lidé zdraví. Citrus, zelené jablko, čistý konec. Casa Santos Lima je rodinný dům z Alenqueru severně od Lisabonu.",
+  par:"Olivy, mandle, slané pečivo",
+  url:"https://www.portske.cz/casa-santos-lima-portuga-branco-bile-vino-zvb0623-p460"},
+
+ {n:1,blok:"Bílá vína",blokPod:"od severu k Lisabonu · 10–12 °C",
+  nazev:"Soalheiro Allo",puvod:"Quinta de Soalheiro · Minho · Alvarinho & Loureiro · 11,5 %",
+  chipy:["Minho","Alvarinho","Loureiro","10–12 °C"],
+  popis:"Jméno je složené z prvních písmen obou odrůd: ALvarinho a LOureiro. Alvarinho dává tělo a broskev, Loureiro květinovou vůni a svěžest. Soalheiro portugalsky znamená „slunné místo“ — a na chladném severu je to vzácnost.",
+  par:"Ústřice, sushi, grilované sardinky",
+  url:"https://www.portske.cz/soalheiro-allo-bile-vino-zvb500-p3321"},
+
+ {n:2,nazev:"Boas Quintas Bucelas Arinto",puvod:"Boas Quintas · DOC Bucelas · Arinto · 12,5 %",
+  chipy:["Bucelas","Arinto","10–12 °C"],
+  popis:"Bucelas je malá apelace kousek od Lisabonu, vymezená už roku 1911 — a hlavní slovo v ní má Arinto. Odrůda, která si drží kyselinu i v horkém létě. Citrus, zelené jablko, mineralita, dlouhý svěží závěr.",
+  par:"Treska, kuřecí na citronu, čerstvé sýry",
+  url:"https://www.portske.cz/boas-quintas-bucelas-arinto-zvb492-p3336"},
+
+ {n:3,nazev:"Quinta de Sant’Ana Branco",puvod:"Quinta de Sant’Ana · Lisabon · Fernão Pires · 12,5 %",
+  chipy:["Lisabon","Fernão Pires","10–12 °C"],
+  popis:"Fernão Pires je nejrozšířenější bílá odrůda Portugalska — aromatická, s tóny květů a zralého citrusu. Rodinná quinta v kopcích u Mafry, pár kilometrů od Atlantiku, z ní dělá víno plné, ale ne těžké.",
+  par:"Kuře, rizoto, asijská kuchyně",
+  url:"https://www.portske.cz/quinta-de-santana-fernao-pires-branco-bile-vino-zv12813-p2687",
+  pauza:"přestávka · sklenice na červené, voda, chleba"},
+
+ {n:4,blok:"Červená vína",blokPod:"Tejo a Douro · 16–18 °C",
+  nazev:"Quinta da Lapa Nana Reserva",puvod:"Quinta da Lapa · Tejo · Reserva · 14 %",
+  chipy:["Tejo","Reserva","16–18 °C"],
+  popis:"Tejo je oblast podél největší řeky Pyrenejského poloostrova, která ústí do Atlantiku v Lisabonu. Úrodná rovina, hodně slunce, zralé ovoce. Nana je měkká, kulatá Reserva — třešně, švestky, jemné koření.",
+  par:"Pečené maso, těstoviny, polotvrdé sýry",
+  url:"https://www.portske.cz/quinta-da-lapa-nana-reserva-cervene-vino-zvb0012-p208"},
+
+ {n:5,nazev:"Feuerheerd’s Reserva Red",puvod:"Feuerheerd’s · DOC Douro · 13,5 %",
+  chipy:["Douro","port cask finish","16–18 °C"],
+  popis:"Suché červené z Doura od portského domu. Klasické dourské odrůdy — Touriga Nacional, Touriga Franca, Tinta Roriz — a jeden trik navíc: zhruba pětina vína zraje v sudech, ve kterých předtím leželo portské. Odtud sametový závěr.",
+  par:"Hovězí, zvěřina, tmavá čokoláda",
+  url:"https://www.portske.cz/feuerheerds-reserva-red-cervene-vino-zvb0736-p2749",
+  pauza:"přestávka · přichází fortifikovaná vína"},
+
+ {n:6,blok:"Na závěr",blokPod:"Madeira a portské · 14–16 °C",
+  nazev:"Henriques & Henriques Rainwater",puvod:"Henriques & Henriques · Madeira · 3 roky · medium dry · 19 %",
+  chipy:["Madeira","3 roky","medium dry","14–16 °C"],
+  popis:"Rainwater je lehčí, polosuchý styl madeiry. Podle legendy do sudů čekajících na pláži natekl déšť, víno se trochu naředilo — a americkým zákazníkům to zachutnalo. Ořech, sušené ovoce, karamel, svěží kyselina.",
+  par:"Aperitiv, paštika, ořechy",
+  url:"https://www.portske.cz/henriques-henriques-rainwater-3-y-o-zv22050-p214"},
+
+ {n:7,nazev:"Quinta do Noval Black",puvod:"Quinta do Noval · Porto · Reserve Ruby · 19,5 %",
+  chipy:["Douro","reserve ruby","14–16 °C"],
+  popis:"Moderní portské z jednoho z nejslavnějších domů Doura. Ruby zraje krátce ve velkých nádobách, takže si drží tmavou barvu a šťavnaté ovoce — černý rybíz, ostružiny, čokoláda. Klidně i lehce chlazené.",
+  par:"Čokoládový dort, modré sýry, doutník",
+  url:"https://www.portske.cz/portske-vino-quinta-do-noval-black-s-papirovou-krabickou-zv21050-p135"}
+];
+
+var SLOVNE=["","nezaujalo mě","ujde","dobré","velmi dobré","vynikající"];
+
+var OTAZKY=[
+ {o:"Uvítací Portuga Branco má jen 9,5 % alkoholu. Proč je to na uvítanou chytrá volba?",a:["Je lehké a svěží — nezatíží chuť před zbytkem večera","Protože je to vlastně nealko","Protože se lépe pije brčkem","Protože vydrží otevřené měsíc"],
+  v:"Nízký alkohol a svěží kyselina chuť probudí, ne unaví. Běžné bílé víno mívá 12–13,5 %."},
+ {o:"Odkud se vzalo jméno Soalheiro Allo?",a:["ALvarinho + LOureiro — první písmena obou odrůd","Z portugalského „haló“ do telefonu","Po fence majitele","Je to zkratka čísla vinice"],
+  v:"<b>AL</b>varinho + <b>LO</b>ureiro. Hezký příklad, jak se dá do jména schovat celé složení."},
+ {o:"Co portugalsky znamená „soalheiro“?",a:["Slunné místo","Solné pole","Samotář","Sluneční hodiny"],
+  v:"Slunné místo. Na deštivém severu Portugalska je to ta nejlepší adresa, jakou vinice může mít."},
+ {o:"Odrůda Loureiro má jméno po rostlině, jejíž květy připomíná vůní. Po které?",a:["Vavřín","Levandule","Jasmín","Heřmánek"],
+  v:"Loureiro = vavřín (loureiro portugalsky). Vůně je květinová, s citrusovým nádechem."},
+ {o:"Která odrůda musí v apelaci Bucelas jasně převládat?",a:["Arinto","Alvarinho","Touriga Nacional","Chardonnay"],
+  v:"Arinto. Bucelas je malá bílá apelace kousek od Lisabonu a Arinto je její páteř."},
+ {o:"Čím je Arinto proslulé?",a:["Svěží kyselinou, kterou si drží i v horku","Tím, že z něj vzniká jen sladké víno","Červenou dužinou","Tím, že roste jen na Madeiře"],
+  v:"Kyselina, která nezmizí ani v horkém létě. Proto je Arinto oblíbené na jihu i v sektech."},
+ {o:"Fernão Pires je nejrozšířenější bílá odrůda Portugalska. Jak jí říkají v Bairradě?",a:["Maria Gomes","Dona Branca","Pedro Pires","Fernanda"],
+  v:"Maria Gomes. Jedna odrůda, dvě jména — v Portugalsku to není nic neobvyklého."},
+ {o:"Co znamená slovo „quinta“ na etiketě?",a:["Statek, vinařská usedlost","Pátý ročník","Pětilitrová láhev","Sklep"],
+  v:"Quinta je statek s vinicemi. Proto Quinta da Lapa, Quinta de Sant’Ana, Quinta do Noval…"},
+ {o:"Řeka Tejo dala jméno oblasti dnešní Nany Reservy. Kde se vlévá do Atlantiku?",a:["V Lisabonu","V Portu","Ve Faru","V Seville"],
+  v:"V Lisabonu. Tejo (španělsky Tajo) je nejdelší řeka Pyrenejského poloostrova."},
+ {o:"Čím si Feuerheerd’s Reserva Red získává sametový závěr?",a:["Část vína zraje v sudech, kde předtím leželo portské","Přidává se do něj portské víno","Zraje na lodi na moři","Filtruje se přes korek"],
+  v:"Zhruba pětina vína zraje v sudech po portském. Nepřidává se nic — sud předá jen jemnost a stopu vůně."},
+ {o:"Podle legendy vznikl styl madeiry Rainwater díky…",a:["dešti, který natekl do sudů čekajících na pláži","vodě z ledovce","mnichům, kteří víno ředili v postu","námořníkům, kteří pili z kaluží"],
+  v:"Sudy čekaly na pláži na loď, pršelo, víno se trochu naředilo — a v Americe z toho byl hit."},
+ {o:"Co se s madeirou dělá při výrobě a u jiného vína by to byla katastrofa?",a:["Záměrně se zahřívá","Zmrazí se na kost","Nechá se zkvasit dvakrát","Míchá se s mořskou vodou"],
+  v:"Víno se zahřívá (estufagem). Napodobuje to cesty lodí přes tropy, po kterých madeira chutnala lépe než před vyplutím."},
+ {o:"Jak dlouho vydrží otevřená láhev madeiry?",a:["Týdny až měsíce","Jeden večer","Tři dny","Hodinu, pak zoxiduje"],
+  v:"Madeira už teplo i vzduch zažila při výrobě, takže ji otevření nerozhodí. Nejodolnější víno na světě."},
+ {o:"Čím se Ruby portské, jako dnešní Noval Black, liší od Tawny?",a:["Ruby zraje krátce ve velkých nádobách a drží ovoce, tawny v malých sudech zjantarovatí","Ruby je vždy suché, tawny sladké","Ruby je z bílých hroznů","Tawny se pije jen teplé"],
+  v:"Ruby = tmavá barva a šťavnaté ovoce. Tawny = dlouhé zrání v malých sudech, cihlová barva, ořechy a karamel."}
+];
+
+var HODNOSTI=[
+ [0,"Vinho","Večer teprve začal a chuť si zatím pamatuje víc než hlava. To je v pořádku."],
+ [5,"Vinho Regional","Základ držíte. Sever od jihu už rozeznáte."],
+ [8,"DOC","Slušná úroveň. Mapa Portugalska se vám v hlavě rozkresluje."],
+ [11,"Reserva","Tohle už není náhoda — orientujete se v regionech i ve sklepě."],
+ [14,"Grande Reserva","Plný počet. Příští degustaci klidně veďte sami."]
+];
+
+var stav={body:{},pozn:{},kviz:null};
+try{var u=localStorage.getItem(KLIC); if(u){var p=JSON.parse(u); stav.body=p.body||{}; stav.pozn=p.pozn||{}; stav.kviz=(typeof p.kviz==="number")?p.kviz:null;}}catch(e){}
+function uloz(){try{localStorage.setItem(KLIC,JSON.stringify(stav));}catch(e){}}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function odkaz(url,txt,cls){return '<a class="'+cls+'" href="'+esc(url)+'" target="_blank" rel="noopener">'+txt+'</a>';}
+
+var LEGENDA='<details class="legenda" open><summary><span class="t">Jak bodovat</span><span class="s" aria-hidden="true">›</span></summary><div class="in">'
+ +'<p>U každého vína klepněte na počet skleniček. Hodnotíte jen to, jak vám víno chutná — žádná znalost není potřeba.</p>'
+ +'<div class="stupne">'
+ +'<span class="g">🍷</span><span class="d"><b>1 · nezaujalo mě</b> — tohle si znovu nedám</span>'
+ +'<span class="g">🍷🍷</span><span class="d"><b>2 · ujde</b> — nic proti, nic navíc</span>'
+ +'<span class="g">🍷🍷🍷</span><span class="d"><b>3 · dobré</b> — rád si ho dám znovu</span>'
+ +'<span class="g">🍷🍷🍷🍷</span><span class="d"><b>4 · velmi dobré</b> — tohle si zapamatuji</span>'
+ +'<span class="g">🍷🍷🍷🍷🍷</span><span class="d"><b>5 · vynikající</b> — tohle chci domů</span>'
+ +'</div>'
+ +'<p>Opětovným klepnutím na stejnou skleničku body smažete. Na záložce <b>Můj večer</b> se z bodů sestaví vaše pořadí — při shodě rozhoduje pořadí nalévání — a u každého vína najdete odkaz do e-shopu.</p>'
+ +'</div></details>';
+
+var elVina=document.getElementById("tab-vina");
+function kresliVina(){
+  var h=LEGENDA;
+  VINA.forEach(function(v){
+    if(v.blok){h+='<div class="blok"><span>'+esc(v.blok)+'</span><em>'+esc(v.blokPod)+'</em></div>';}
+    var b=stav.body[v.n]||0;
+    h+='<article class="karta"><div class="hlava"><div class="cislo'+(v.uvit?' uvit':'')+'">'+(v.uvit?'✦':v.n)+'</div><div style="flex:1;min-width:0">'
+      +'<div class="nazev">'+esc(v.nazev)+'</div><div class="puvod">'+esc(v.puvod)+'</div></div></div>'
+      +'<div class="chipy">'+v.chipy.map(function(c){return '<span class="chip">'+esc(c)+'</span>';}).join("")+'</div>'
+      +'<p class="popis">'+esc(v.popis)+'</p>'
+      +'<div class="par"><b>K jídlu</b> &nbsp;'+esc(v.par)+'</div>'
+      +odkaz(v.url,'Koupit na portske.cz →','kup')
+      +'<div class="body-row"><span class="lbl">Body</span><span class="slovne" data-sl="'+v.n+'">'+SLOVNE[b]+'</span><div class="sklenky" data-vino="'+v.n+'">';
+    for(var i=1;i<=5;i++){
+      h+='<button type="button" data-b="'+i+'" aria-label="'+i+' z 5 – '+SLOVNE[i]+'" class="'+(b>=i?"on":"")+'">🍷</button>';
+    }
+    h+='</div></div><textarea data-pozn="'+v.n+'" placeholder="Poznámka…" aria-label="Poznámka k vínu '+esc(v.nazev)+'">'+esc(stav.pozn[v.n]||"")+'</textarea></article>';
+    if(v.pauza){h+='<div class="pauza">'+esc(v.pauza)+'</div>';}
+  });
+  h+='<div class="cta"><div class="nad">Chutnalo?</div><h3>Všechna dnešní vína najdete na e-shopu</h3>'
+   +'<p>Přes 470 portugalských vín, portských a madeir. Rozvoz po celé ČR.</p>'
+   +'<a href="'+ESHOP+'" target="_blank" rel="noopener">Koupit na portske.cz</a></div>';
+  elVina.innerHTML=h;
+}
+elVina.addEventListener("click",function(e){
+  var b=e.target.closest(".sklenky button"); if(!b) return;
+  var box=b.parentNode, id=box.getAttribute("data-vino"), val=+b.getAttribute("data-b");
+  if(stav.body[id]===val){delete stav.body[id];} else {stav.body[id]=val;}
+  Array.prototype.forEach.call(box.children,function(x,i){x.classList.toggle("on",(stav.body[id]||0)>=i+1);});
+  elVina.querySelector('[data-sl="'+id+'"]').textContent=SLOVNE[stav.body[id]||0];
+  uloz();
+});
+elVina.addEventListener("input",function(e){
+  if(!e.target.matches("textarea[data-pozn]")) return;
+  stav.pozn[e.target.getAttribute("data-pozn")]=e.target.value; uloz();
+});
+
+var idx=0, spravne=0, poradi=OTAZKY.map(function(_,i){return i;});
+var elTelo=document.getElementById("kviz-telo"), elProg=document.getElementById("progres");
+function michej(a){var r=a.slice();for(var i=r.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=r[i];r[i]=r[j];r[j]=t;}return r;}
+function kresliProgres(){elProg.innerHTML=OTAZKY.map(function(_,i){return '<i class="'+(i<idx?"done":"")+'"></i>';}).join("");}
+function kresliOtazku(){
+  kresliProgres();
+  if(idx>=OTAZKY.length){ konecKvizu(); return; }
+  var q=OTAZKY[poradi[idx]];
+  var volby=michej(q.a.map(function(t,i){return {t:t,ok:i===0};}));
+  elTelo.innerHTML='<p class="kolik">Otázka '+(idx+1)+' z '+OTAZKY.length+'</p><p class="otazka">'+esc(q.o)+'</p><div class="odpovedi">'
+    +volby.map(function(v,i){return '<button type="button" data-ok="'+(v.ok?1:0)+'">'+esc(v.t)+'</button>';}).join("")
+    +'</div><div id="po"></div>';
+  elTelo.querySelector(".odpovedi").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b||b.disabled) return;
+    var ok=b.getAttribute("data-ok")==="1";
+    if(ok) spravne++;
+    Array.prototype.forEach.call(this.children,function(x){x.disabled=true; if(x.getAttribute("data-ok")==="1") x.classList.add("spravne");});
+    if(!ok) b.classList.add("spatne");
+    /* vysvětlení je náš vlastní text, smí obsahovat <b> */
+    document.getElementById("po").innerHTML='<div class="vysvetleni">'+(ok?'<b>Správně.</b> ':'<b>Tentokrát ne.</b> ')+q.v+'</div>'
+      +'<button class="dalsi" type="button">'+(idx===OTAZKY.length-1?"Výsledek":"Další otázka")+'</button>';
+    document.querySelector(".dalsi").addEventListener("click",function(){ idx++; kresliOtazku(); window.scrollTo({top:0,behavior:"smooth"}); });
+  });
+}
+function hodnost(s){var h=HODNOSTI[0];HODNOSTI.forEach(function(x){if(s>=x[0])h=x;});return h;}
+function konecKvizu(){
+  stav.kviz=spravne; uloz();
+  var z=hodnost(spravne);
+  elProg.innerHTML=OTAZKY.map(function(){return '<i class="done"></i>';}).join("");
+  elTelo.innerHTML='<div class="skore"><div class="cislice">'+spravne+'/'+OTAZKY.length+'</div>'
+    +'<div class="hodnost">'+esc(z[1])+'</div><p>'+esc(z[2])+'</p></div>'
+    +'<button class="dalsi" type="button" id="navecer">Moje vyhodnocení vín</button>'
+    +'<button class="tlac-sek" type="button" id="znovu">Zkusit znovu</button>';
+  document.getElementById("znovu").addEventListener("click",function(){idx=0; spravne=0; poradi=michej(OTAZKY.map(function(_,i){return i;})); kresliOtazku();});
+  document.getElementById("navecer").addEventListener("click",function(){prepni("vecer");});
+}
+
+function serazena(){
+  return VINA.filter(function(v){return stav.body[v.n];})
+    .sort(function(a,b){return (stav.body[b.n]-stav.body[a.n])||(a.n-b.n);});
+}
+function kresliVecer(){
+  var el=document.getElementById("zebricek");
+  var s=serazena(), h="";
+  if(!s.length){
+    h='<div class="prazdno">Zatím jste nic neohodnotili. Vraťte se na záložku Vína a dejte sklenkám body.</div>';
+  }else{
+    var top=s[0];
+    h+='<div class="cta"><div class="nad">Vaše vítězné víno</div><h3>'+esc(top.nazev)+'</h3>'
+     +'<p>'+"🍷".repeat(stav.body[top.n])+' · '+SLOVNE[stav.body[top.n]]+'</p>'
+     +'<a href="'+esc(top.url)+'" target="_blank" rel="noopener">Koupit na portske.cz</a></div>';
+    h+='<h3 class="nadpis2">Pořadí podle líbivosti</h3><p class="podnadpis">Seřazeno podle vašich bodů. Tlačítko otevře víno na e-shopu.</p>';
+    h+='<div class="zebricek">'+s.map(function(v,i){
+      return '<div class="radek'+(i===0?' prvni':'')+'"><div class="poz">'+(i+1)+'.</div>'
+        +'<div class="jm">'+esc(v.nazev)+'<small>'+stav.body[v.n]+'/5 · '+SLOVNE[stav.body[v.n]]+'</small></div>'
+        +odkaz(v.url,'Koupit','mini')+'</div>';
+    }).join("")+'</div>';
+    var zbyva=VINA.length-s.length;
+    if(zbyva>0) h+='<p class="podnadpis" style="margin-top:10px">Neohodnoceno: '+zbyva+' '+(zbyva===1?'víno':(zbyva<5?'vína':'vín'))+'.</p>';
+  }
+  if(typeof stav.kviz==="number"){
+    var z=hodnost(stav.kviz);
+    h+='<h3 class="nadpis2">Kvíz</h3><div class="radek"><div class="poz">★</div><div class="jm">'+esc(z[1])+'</div><div class="bd">'+stav.kviz+'/'+OTAZKY.length+'</div></div>';
+  }
+  h+='<div class="cta"><div class="nad">Děkujeme za večer</div><h3>Celé portfolio LIKOR na jednom místě</h3>'
+   +'<p>Dnešní vína i zbytek nabídky — portská, madeiry, tichá vína a dárková balení.</p>'
+   +'<a href="'+ESHOP+'" target="_blank" rel="noopener">Koupit na portske.cz</a></div>';
+  el.innerHTML=h;
+}
+document.getElementById("kopiruj").addEventListener("click",function(){
+  var t="Degustační menu — "+AKCE+"\n\n";
+  serazena().forEach(function(v,i){
+    t+=(i+1)+". "+v.nazev+" — "+stav.body[v.n]+"/5"+(stav.pozn[v.n]?"  ("+stav.pozn[v.n]+")":"")+"\n   "+v.url+"\n";
+  });
+  if(typeof stav.kviz==="number") t+="\nKvíz: "+stav.kviz+"/"+OTAZKY.length+" — "+hodnost(stav.kviz)[1];
+  t+="\n\nVína: portske.cz";
+  var btn=this;
+  function hotovo(){btn.textContent="Zkopírováno";setTimeout(function(){btn.textContent="Zkopírovat souhrn";},1800);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(hotovo,function(){});}
+  else{var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");hotovo();}catch(e){}document.body.removeChild(ta);}
+});
+
+var sekce={vina:document.getElementById("tab-vina"),kviz:document.getElementById("tab-kviz"),vecer:document.getElementById("tab-vecer")};
+var nav=document.querySelector("nav");
+function prepni(t){
+  Array.prototype.forEach.call(nav.children,function(x){x.setAttribute("aria-selected",x.getAttribute("data-tab")===t?"true":"false");});
+  for(var k in sekce){sekce[k].hidden=(k!==t);}
+  if(t==="vecer") kresliVecer();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+nav.addEventListener("click",function(e){var b=e.target.closest("button[data-tab]"); if(b) prepni(b.getAttribute("data-tab"));});
+
+kresliVina();
+poradi=michej(poradi);
+kresliOtazku();
+})();
+</script>
+</body>
+</html>
