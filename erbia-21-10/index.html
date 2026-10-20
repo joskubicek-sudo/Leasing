@@ -74,6 +74,21 @@ input:disabled{background:#F1EADF;color:var(--ink);border-color:var(--linka)}
 .lista .v small{font-size:13px;color:#F1E2C6;font-weight:400}
 footer{text-align:center;color:var(--seda);font-size:12.5px;margin:26px 0 8px}
 footer a{color:var(--bordo)}
+.tabs{position:sticky;top:0;z-index:6;display:flex;background:var(--bg);border-bottom:1px solid var(--linka);max-width:640px;margin:0 auto;padding:10px 16px 0}
+.tabs button{flex:1;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;letter-spacing:.4px;background:none;border:0;
+ color:var(--seda);padding:10px 4px 12px;border-bottom:3px solid transparent;cursor:pointer}
+.tabs button.on{color:var(--bordo);border-bottom-color:var(--bordo)}
+.tabs-wrap{position:sticky;top:0;z-index:6;background:var(--bg)}
+.nav h2{font-size:17px;color:var(--bordo);margin-bottom:6px}
+.nav p{font-size:14.5px;margin-top:6px}
+.nav ul{margin:8px 0 0 18px}.nav li{font-size:14.5px;margin-top:6px}
+.nav .krok{display:flex;gap:12px;align-items:flex-start}
+.nav .krok .cis{flex:0 0 34px;height:34px;font-size:14px}
+.nav .pozn{background:#F3EADB;border-left:3px solid var(--bronz);padding:10px 12px;border-radius:0 10px 10px 0;margin-top:10px;font-size:14px;font-style:italic}
+.nav table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.nav td{padding:6px 4px;border-bottom:1px solid var(--linka);vertical-align:top}
+.nav td:first-child{width:38px;text-align:center}
+.odkaz{background:none;border:0;padding:0;font:inherit;color:var(--bordo);text-decoration:underline;text-decoration-color:var(--zlata);cursor:pointer}
 @media (max-width:380px){.tip{flex-basis:112px}.cis{flex-basis:34px;height:34px}}
 </style></head>
 <body>
@@ -82,7 +97,12 @@ footer a{color:var(--bordo)}
  <h1>SLEPÁ DEGUSTACE</h1>
  <div class="pod">Za kolik se víno prodává? · ERBIA HOLDING · 21. 10. 2026</div>
 </header>
+<div class="tabs-wrap"><nav class="tabs" role="tablist">
+ <button type="button" class="on" data-tab="tip" role="tab">Tipování</button>
+ <button type="button" data-tab="navod" role="tab">Jak degustovat</button>
+</nav></div>
 <main>
+<div id="tab-tip">
  <div class="karta">
   <label class="lbl" for="jmeno">Vaše jméno</label>
   <input id="jmeno" type="text" autocomplete="name" placeholder="Jméno a příjmení" style="margin-top:8px">
@@ -92,6 +112,7 @@ footer a{color:var(--bordo)}
   <p>Láhve jsou zahalené. U každého vzorku napište, za kolik se víno prodává — cena za láhev 0,75 l na portske.cz. Dnešní vína stojí zhruba od 150 do 1 500 Kč.</p>
   <p><b>Body za tip:</b> odchylka do 10 % = 3 body · do 20 % = 2 body · do 35 % = 1 bod.</p>
   <p>Po každém bloku vyhlásíme kód. Zadáte ho — ukáže se víno, cena a vaše body. Tipy v bloku se tím uzamknou.</p>
+  <p>Nevíte, jak na to? <button type="button" class="odkaz" data-go="navod">Jak degustovat a odhadnout cenu</button></p>
  </div>
  <div id="bloky"></div>
  <div class="karta roz" id="roz">
@@ -101,12 +122,96 @@ footer a{color:var(--bordo)}
   <div class="vys" id="rozVys"></div>
  </div>
  <div class="karta" id="vecer" hidden></div>
+</div>
+<div id="tab-navod" class="nav" hidden>
+ <div class="karta">
+  <h2>Jak degustovat</h2>
+  <p>Degustace není zkouška. Stačí zpomalit a každé víno projít čtyřmi kroky — oko, nos, ústa, dochuť. Na jeden vzorek si nechte aspoň dvě minuty.</p>
+  <div class="pozn">Sklenici držte za stopku — ruka víno ohřívá a na kalichu zůstávají otisky. Mezi vzorky voda a kousek pečiva. Vylít zbytek do kbelíku je v pořádku, i sommeliéři to dělají.</div>
+ </div>
+
+ <div class="karta"><div class="krok"><div class="cis">1</div><div>
+  <h2>Oko</h2>
+  <p>Nakloňte sklenici proti bílému listu a dívejte se na okraj.</p>
+  <ul>
+   <li><b>Bílé:</b> světlé se zelenkavým odleskem bývá mladé a svěží, sytě zlatavé napovídá zrání nebo dřevo.</li>
+   <li><b>Červené:</b> fialový okraj znamená mládí, cihlový až granátový věk.</li>
+   <li><b>Sekty:</b> čím jemnější a vytrvalejší perlení, tím delší zrání v láhvi.</li>
+  </ul>
+  <p>„Slzy“ po stěně ukazují alkohol a cukr, ne kvalitu.</p>
+ </div></div></div>
+
+ <div class="karta"><div class="krok"><div class="cis">2</div><div>
+  <h2>Nos</h2>
+  <p>Nejdřív přičichněte v klidu. Pak sklenicí zakružte — víno se provzdušní — a čichejte znovu. Rozdíl bývá velký.</p>
+  <ul>
+   <li><b>Ovoce</b> — citrus, jablko, broskev u bílých; třešeň, švestka, ostružina u červených.</li>
+   <li><b>Květiny a byliny</b> — bílé květy, fialka, tymián.</li>
+   <li><b>Sud</b> — vanilka, toast, kokos, kakao.</li>
+   <li><b>Zrání</b> — pečivo a brioška u sektů, kůže, tabák, houby u starších červených.</li>
+  </ul>
+  <p>Nehledejte „správnou“ odpověď. Co vám vůně připomíná, to tam je.</p>
+ </div></div></div>
+
+ <div class="karta"><div class="krok"><div class="cis">3</div><div>
+  <h2>Ústa</h2>
+  <p>Malý doušek, převalte ho po celém jazyku a chvíli podržte. Všímejte si pěti věcí:</p>
+  <ul>
+   <li><b>Sladkost</b> — špička jazyka. Většina dnešních vín je suchá.</li>
+   <li><b>Kyselina</b> — sbíhají se sliny. Dává svěžest.</li>
+   <li><b>Třísloviny</b> — u červených svírají dásně jako silný čaj.</li>
+   <li><b>Alkohol</b> — hřejivost v krku.</li>
+   <li><b>Tělo</b> — lehké jako odstředěné mléko, nebo plné jako smetana?</li>
+  </ul>
+  <p>Dobré víno má tyhle složky v rovnováze — žádná nevyčnívá.</p>
+ </div></div></div>
+
+ <div class="karta"><div class="krok"><div class="cis">4</div><div>
+  <h2>Dochuť</h2>
+  <p>Polkněte nebo vylijte a počítejte sekundy, jak dlouho chuť zůstává. Tři sekundy jsou krátké, deset a víc už je velké víno. Délka dochuti je jedno z nejspolehlivějších měřítek kvality.</p>
+ </div></div></div>
+
+ <div class="karta">
+  <h2>Jak odhadnout cenu</h2>
+  <p>Co cenu obvykle zvedá:</p>
+  <ul>
+   <li><b>Délka dochuti</b> — nejlepší vodítko.</li>
+   <li><b>Vrstevnatost</b> — kolik různých vůní najdete a jak se ve sklenici mění.</li>
+   <li><b>Sud</b> — vanilka a toast znamenají měsíce v dubu. Sud je drahý.</li>
+   <li><b>Koncentrace</b> — hustota ovoce, sytá barva, jemné, ale pevné třísloviny.</li>
+   <li><b>Sekty</b> — jemné perlení a tóny pečiva prozrazují dlouhé zrání v láhvi.</li>
+  </ul>
+  <p>A na co si dát pozor:</p>
+  <ul>
+   <li>Lehké a svěží neznamená automaticky levné.</li>
+   <li>Platí se i jméno — slavný dům nebo region přidá na ceně víc než chuť.</li>
+   <li>Víno, které vám nejvíc chutná, nemusí být nejdražší. Proto to dnes zkoušíme naslepo.</li>
+  </ul>
+  <div class="pozn">Tip: ochutnejte celý blok, než napíšete první cenu. Snáz pak víno postavíte vedle sebe — co je dražší, co levnější.</div>
+ </div>
+
+ <div class="karta">
+  <h2>Kolečka chuti 1–5</h2>
+  <p>Hodnoťte, co chutná vám — ne co si myslíte, že by chutnat mělo.</p>
+  <table>
+   <tr><td><b>1</b></td><td>nezaujalo mě</td></tr>
+   <tr><td><b>2</b></td><td>v pořádku, ale nic víc</td></tr>
+   <tr><td><b>3</b></td><td>dobré, dal bych si znovu</td></tr>
+   <tr><td><b>4</b></td><td>velmi dobré, chci si ho zapamatovat</td></tr>
+   <tr><td><b>5</b></td><td>vynikající, tohle kupuji</td></tr>
+  </table>
+  <p>Na konci večera vám karta ukáže vaše favority s odkazem do e-shopu.</p>
+  <button type="button" class="btn" data-go="tip" style="width:100%;margin-top:14px">Zpět k tipování</button>
+ </div>
+ <p style="text-align:center;font-size:12.5px;color:var(--seda);margin-top:14px;font-style:italic">Josef Kubíček · sommeliér, Dům portského vína</p>
+</div>
  <footer>Dům portského vína · Radlická 3314/71, Praha 5 · <a href="https://www.portske.cz/">portske.cz</a></footer>
 </main>
 <div class="lista"><span class="l">MOJE BODY</span><span class="v" id="celkem">0 <small>/ 36</small></span></div>
 <script>
-const CFG = {"key": "dpv-menu-20261021-erbia", "iter": 150000, "pasma": [[0.1, 3], [0.2, 2], [0.35, 1]], "max": 36, "bloky": [{"id": "b1", "rim": "I.", "nazev": "Sekty", "pod": "klasická metoda · 8 °C", "cisla": [1, 2, 3], "enc": {"s": "xtWGJeAU3XAUyHegElyUFg==", "i": "hDxTGI0dqf6kDdU0", "c": "QLCBcNSqWF5ir4CDEU0vQO1mbsKh9Q8iHgGyPndqi9LaMnLUjyo/2cZPG1B7p3H7evd5KvynsmZrzs7yqurYZ3AAQI8fb/4uGJTfISuLsOmCo9uz12vf7mYde8oEpPbln1wMeHhj1bOWd2JG4ueIA2YKZbqKYLjn/gjFyQqg23soLdqVG5zCvOw69nFE98Xt/ufW0hQTpSweCCHTZGQeaASbO/Y1dJcg2gN5mTQwPxSlEN+fPeTI7bspaPmFHjZUdtcGMwjb8DTDOeA4aeYquubeCi22dlScB1Ow1ky2qdPV/s6pTx+7zWovSBrp4xjffeXYOWGM0PYEuQgUE67sxhWwJNj8tZyqwLDyQFB7f3KIYbVgAeSo0SpSR+nxN190fZVNRIoFYj2EQsVtI/qfEyzs6lfI8iXaAdFc+XuuZiWJdx97ptn3MEkps360CzTY2AcwsBjt8sc2zeq8SSRgquwlsQTCtgVEYcikK7A3Qye/uEIaMvpKms9t7lDtaUUJ72Ibsr7y3IkyKwMskWmud/w8TozHF2H4lgz9xzhdCGEX4n1Uo4craEC9YbZ/iTaKpL23TmhrY8d0zaAvsMOP1i6B5kM9IDMtoIid86pAg4N92RirSEenhlV3q3sfINnzCKAKg7xbEkU+yR7Kn7LK/15xxPZ8yrhpT+mprWrPc3WO2U6oDKCwcOncfuGxhDeVviA7pWtO6bzNvtw9aaM2ZcRa4IunFCd7TvGZlAGnoVew2gtFEnigHWeIdTTWu3A="}}, {"id": "b2", "rim": "II.", "nazev": "Bílá", "pod": "10–12 °C", "cisla": [4, 5, 6], "enc": {"s": "UH7QZHoVSB5Be53ADbEPIQ==", "i": "NyaPSeeut+hts/PK", "c": "b3pGRTN7hh8yL7BaYs0ABfwpcTd9i/SmPyYmS1sQX90Wk3qMRcHXq4DChB+Y2e+mr/Y8aIVE8977bpKO4rcZK8U5W9mtCyrdkyLg2zefJstl6B5S6kLtWMJYzKFUoUoSYdr5x8He/KhME1Y3Pb7xNMQKTZQDOAb/gw709IqcibfdQa2zK5dwcwLKc4tIoqYPqa+it5ZXDT87jUR9oy1xtAzY1FOg2ipfrerd/WfL+P6Ri2du0Ux08mzbk6u0QatE+JIf/ShHRTl5zyH/offmbPnrlvEMJZWagFthepWUH+zPe/wQfb25BT07LxtGKOeWH2rWTgHlRBNcM3iRiKrwwQN8L7xkOWte08seHpbw5CIStSZkd6B7S9ZQwPHLRYyUu6Jq8jAer86s7AwnHFP6D+92qJ3qNr98MygSXSUVudqHLHyXp5AnKxAtwPs5KcSJ3RVIMhWaGSnkbIeVJ6Je+sJdcB1zUqsxWK4ixBmOyu6y9vJVi984jZ5y4TJQHuEvdIw8dhUmfFxVMCqp3e7ZPVJBhvXnvuyUrfuwTubdFViVjd3p1Fll0SxhYGey6dV9ZD279KJP5C0hVvqyY0ai3T/m5fV5fJ2RWN/BtPK2SH2FMAt9ls6LLVRbtHXq2TDyfbGJKAOdVtF5Ag/rL/iz4+SZE4RQD4D+vlncc3OVaHFfsNz6u2faahue5TbMT3yp08dbJuwPXW7JRj4KevYvPSkf4YTsUEZlIgxIY7cxrcub/J1IW7X38thxZlBhj5tsHl/AzA4TjRcXpiKpHEMWk+C9zXRfJuTXU74V+r6qWkPwrVAZhzGQLu3LeBHwmNg+zGQodpbO8qR2k9sIZmJzkFuyVPc8"}}, {"id": "b3", "rim": "III.", "nazev": "Červená", "pod": "16–18 °C", "cisla": [7, 8, 9, 10, 11, 12], "enc": {"s": "URdrxEOF/yHa/5rQqA0Hhg==", "i": "xkZxV0jTVwS+PoEo", "c": "gvjW4MT2tkq/y35Hgzx+2tz+ly8Z7RhvfJWnNj5Hid6bV8A1HDC589h77RaiYhtLCX0J0UPNM0kKfKQV+maJ/KGvQnmdKAuenoVVNsOykZU5VwPLA3CYBI8v6gXFR2uMuK7VoUBcxPXZQG8tjOSzB4Uxk2ihOj/jOSKFvmN1uZO4XvX9ZwOPnNe+QylCA0FshZCPd+JUZPhlljdQshP4aBwe6zPa5pJBeOslO/LvLxS/Y+0NBHRB2YpDbkIv6pwFWAxtPjOpJcTEKp39Eo8jML2g28ul3r8YCIq9twLXpuhedE7Xf8HnKkQjPXi4uA5IKGsTWNYPhbiGWkmChlQKsU/i7iR34woEksy+rjMIMo8kdFM4TzLplsRqT6kouba0LHa3OMOhHbc5gyTqRnQLNB/lYdDWgls+Nl3bEjkYV2yVRbR3F/MZ5+hZdsqdAjYfYK6OP49RssJ3CwdispASYnMYT75SWPOQDfARPwD/pcVUxrFCgsv2tmaEifHUVFF/qFdy9HlrhYINXXGotgceVrn/32uuIs5sAQ+oYiha9ELQwSGJGxqqaub5hFGyL/txOl2E/dozOQPKWSWl8RUxTKC1O/eKMg4hn7eYX2eSYRJyG1V47Dyhm/3lgfj1hT4MG4PToHT80KOWYQOwiH7ux1NhMQP4Sb7eoCNXeNn7AMxuGEh8G3hE0+XtQ7t97I7k0KDubc3YOIOoy67F28QnYNBq2jdhkf19DBqTOgCwaNCzW6Ji+x+3hyiwikenh1LWNf9qMZyIR1G1WmpU815NMla19oh7lonYDFnihYEhRhptHBhrJXyms2XhYHnxY2H0mw/9TbEyHrN8nf//ktOAAH0F3uQ6+RP78kcb1JLeJjtJrcvi/rKbKHNf64QPYtemsz7G628TlAKizm0mY7Oth0Uu4ZMowugiC3VgDJ/di1ucmIHINOU6yVHrKR1UddBiKRsTqk2QS5pOEt5eDymoa1uiPcK1tz3r42/btRoXhD1YrgXtFoF7/H68D2hGXaQQrcTbq1kyS3r6nVhTb6yEc0Tx8PYxFH71SyvqZX+QgGi53E6zpbTdl5XHgnhaYfPqEq8uxT3W4VhlbuPlhoF/bP8OhLhw2SLNVOK64cX19qB38jXOe753WwFq9woIFKHBYF6oyieMqeotjDQMLv+IMJwRvOyip2SmO2UmZD/T0jIzevqCkLLJtOKFbvCQK2L3+5DAg+FULB2CLJchcmPn6t05SBEgJgNmkUcwtdKINxVxTjX0QKAjvL9S5lXfzfJFYF10v1EfCv+kEp9tO6LTkf21osowpnSLezNXBHimRAMoUAU8DewV9bBeXeBcnE9ckP/JBbjPrNPljWKZs3kerYzm89ftKuWy++T6Ngc4yZJCrclBi/fYOCWsoLIXDiGtYB46UHYB1Y9k8BHzVQmY+vbaRM9H40ebMHNqEYFn++ES8DAeVkIcWI6Df/lWHLTujU5V/i9EVcWNq5g2dGstcNnDeH6dpNL5cvCIO4dvEGrukpOqkKro3aNOvhLfcnNKI0112kBroapy1uNW06WQ3zvEqB70uYDjhTRzmVLQ/UcsietvlXVArJ6GI2oCn3klH27eBlFC+VO+cA=="}}]};
+const CFG = {"key": "dpv-menu-20261021-erbia", "iter": 150000, "pasma": [[0.1, 3], [0.2, 2], [0.35, 1]], "max": 36, "bloky": [{"id": "b1", "rim": "I.", "nazev": "Sekty", "pod": "šumivá · 8 °C", "cisla": [1, 2, 3], "enc": {"s": "Q62fezfKlImRFD08HewtCg==", "i": "fpVmCnp6DRObMGeH", "c": "4Reiw8XCRhV1OLOaMZZVlZAFpdFnEAJYKSYWJUc6HvTOeo40pVNHujyl3ermeQ0FVJcBRo6l9kLfxJcwU6uMInf8PDYmRMVhZsF0oQOlkZP1VysnIoiPSqOD+bG7kkUGlBw1AEfyOkQXwUo0wGvLjHcU/Lt1E9+yGKdSRRBtFAGW1KHZ72774kg7a5XNzH1Pz67RBPjJfYMW5kCb8+VDET4/6Ef821BXSuEMmnlD9y9bi89eKcaheBAWQs/TR9eXJAfrMk3WrJSKQdh1iw5KdR6F+dy6HzUGZoibn+dg4hI1QQYWTVlLQGGohf1dyZvnJvB1qi7/kiRgZBD1xZGgjyroj8/SVa/taW6KKzvR+N5Tj9+d2+KdupRK1lP+P619m/rSJzL7gi2N5PnohutV70GRxV+NY39uMlnJp/eHzwQhOXPoVbPn+9uK9xnpBdn+4h1YWMtz3N+zLKp4Dks/DSXum66ndXjJSTXs0pTyb9lrew/MVEXGvpbtg0glv0lsJ/wWIfpL2C5EXBgiFiPN1DLxK4onB3iJtnUqSvIYmhMDRPZ8bYSafyeQYuG0UIVFLR4clHA8vov+PumaZMMqREU96rLXCxsYb3chkhlJx1X3DZySUT8a1y796Hn2q0V/b1YSiauIYWx150QWSHy+HEobup9REbUUzJDhhvfC9yIQYl40s14oD/ljaBu5BK57Ahmms9W9a9zLQdsnKJ+GCV69+qmm8iU5FYrIYRH6PxO3utAj31lvQUlp+D3h3Qw="}}, {"id": "b2", "rim": "II.", "nazev": "Bílá", "pod": "10–12 °C", "cisla": [4, 5, 6], "enc": {"s": "Gpqa5QeowN4p8NFLGvx5Rg==", "i": "G/PiLa7Zvskka5Kj", "c": "c+478iRTdLPAp9Kt4GeF8JUH+zh4fcwMik2JAie1m9sDafX6J0b3VfpgN5vR4X06yxeeFLRpw6bnfQ5P1OWE5oG1D4ZWH15Ej7ULS7bGs/tIszpENDWfNr+GTPDSab8AiIvhE9+vhsOcXAlXqP/0SUpiGoKtRnOvpFWWt8J/h7uWh6ZqA0ZmWoJDsgBBsOQ7ZuTkquhYYxVFGY5aEFsBGzC7J5BcAuUKN/HLWWHGu8Rf+1wio8FOw8Ii3L7h9oRuwG1kMyYDinacaZjUgCQ6zyeETjbx40CfsNaU3hNeSJLGO9TciB7/Bzx631Z/lC2VWA4aSvUTC4+ZQ5ke1Jl+XI4UN2fGYT8zQpiaaJ3DmEtniT4yd6K1ICm43A9MDoyUyXCHqCgjPP2JXwmMd38fuxpHS6DZ0L+5GbF1XEb1dE86T4nkpspf3IZI6mt1MCIX19bpd3dAhXZHseP7m50BLcN0+4KaiKhkqOaG+a9yJHZqgVVFrWXG+MnyWq/DDXkouBJbGwlJyVpG1RRdMbKCagZeJDQlyuOqukTI1PGmCk9TNaN3xzeTg396mqR/H3Pvd4LqlKnyTb5eWuDm89ZYFGHdY1jrb2m/lKMrI2QeXQIUdZnsDP78V25dLWyDlCYglIEY3q011ND+xzQX2ETDfJkKzwRc8CjImsA+CFFfCHbHxL6Q172IQgsJ41ZmOKfH48YDPK4AXiyFnNmeBlll+A6bZerKpbUWcsC2X7isqb/pLA12pZUbViJI54XcwBeugkYnOnvi9gHmtLNw4aBWBlRQkR1KGYdYf3mKIcXgpOT40jR0O99YWuX2/IFhzShJ+C2YmGpE1UVssn6BCl9xEQXRup8i"}}, {"id": "b3", "rim": "III.", "nazev": "Červená", "pod": "16–18 °C", "cisla": [7, 8, 9, 10, 11, 12], "enc": {"s": "cp6hJm9M0dv1GSd1Srylqg==", "i": "s9WbSisgfFJ64AbG", "c": "tWABf0lJFCreeio1SGk0o2YmmWslYcgwk/tCsG631SG7QcvhwXZejcBUUG93nETNzfh4gJfPZpZSIVvmYUxXmdEAYvo28Tkgg4Q+ur1fS4rDrL98OR1hubBzOR4z0tQ1XvBERYUzfK9O0kofyId9bFxFqO7zta2WuArFa9uDTIE/yGUFAlulaQpBl14unaHpSO7LQTpMr6m/IhaMwVtpTEnQ8AmdIzdVenVrN+qzW6tlLKnSCTlhfBiuqoJCdRO5bG68jyZn+Zn+koTQYV0Xvxv7wUUfn8EgfR8q0VMBf3R+ld/AGBnTjwkeQtn1YTQFseQ99nGBZIo5QTJgToD486Hss66ygmcaZNrNqbXpnTR6cj3gxULF0W8Fdf5T2WTaTz+EcejaIMM79nKTTjw7kfrUnJKqx1gqUestg8v8u7pBszlswjWlNQBOB+nagwrZDFb04ovJ04EJAv6mp36SveFo6gMYpON/ZhbBQZ9RkEI7PKXRkSDapxIUy4T7SafCW6yEtPXbUr7XRq0trZs155mgDD+TMP5a5dXOoE6jzEeJREDO+izTO0aWT2uIVFPKGNRdLJbmuPVDqa4tl2Rkmr1PGqRrnBK1XhtU1ghUPsx0VQfsd3B6a4j8XisN/AUOitiCSLLpqXHODYQxjE4JSdfRVKXvTo5isCgKEdK1fv/GQTbRC0+vIkveAlecJ3nRYUQJN2EQa+0qM5iE2jsXMX9nzeH29gikerNm7biXtLlVE+haXUB3xm1eWsfZHE/G6IGlsUoxslZqttafE3cBD5tV0L7AMyUw08F1gBur0iPsg9JRLy80l0iln11ZCz4eGydWSncayRaAbxjOYDUgbknU1zYoeSQxOUquLEm/5AeKwWvaUDJzzRJoekz4Ng/porjrrQpPR6BdLG58KNLKER7Ii/DqmAiYUIb9f2xZQdDc0aJk1I+UNjIyTzc5BJ7/lThGVXdbDJyd0l1EmSfRmhUYqIOm/sIfCG0MSsNuAjIkRltW8jCW9zvb+lq1HsngvNJp0GB2HmqkI7WL/PmVRuYTWhhjjlnJ9MFcB39gCZm0qmya4OVZCHoWQ9oAzCCMwyHC7U8UWGzB9xoCD3K21IeI6KQJz51Jtfh9JJH9Xz3tve3L2AnUcSt3vDie32qhyNVDL5+4Z64wHiP2uWeCdn0DVLrjnPtueKpHS5lf49X2+yKl10LEzYwO9J8yuE0Q8wU4ko5e64iK1nsbs0vRamAqjclFODBAztppIWdIQUzS/5d8FFCxTdEgVJDN7wEgsw0O5bf+jkDoQm9uk0lilmCqdXYH+Be1U/ZplYtnGjjpNLqvpDLOjX9AQxj38OaWNkQG1dYaUnHtgSOCuXVHUXKmNplEzgNYJQKIVK+64ZoteK2hnQkTV7Buw/5ictep7IQlTterYfETKZiRNR5rNL7KYIjc2erR1tLyiIdNnPAIj32/r2nyYB6garP+Yddb8BJlQTf7LB0KfPYhSHsQ6DNAb1LOq87FDvIc3WihwJj+j3rH4pHH/BGBhyrVQbq9zupeMCKYC1RDHx+czE0J38t2dHRU5FU+ZoEqVmbaizbV4k9aHlvCoPAbi52uLIMKmYY4w8ZDfLyBnVU="}}]};
 let S = {jmeno:'', tip:{}, chut:{}, rozTip:'', kody:{}};
+if(/[?&]reset\b/.test(location.search)){ try{ localStorage.removeItem(CFG.key); }catch(e){} history.replaceState(null,'',location.pathname); }
 try{ const raw = localStorage.getItem(CFG.key); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
 const save = () => { try{ localStorage.setItem(CFG.key, JSON.stringify(S)); }catch(e){} };
 const odhaleno = {};   // id bloku -> payload
@@ -187,6 +292,9 @@ document.addEventListener('click', e=>{
   t.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('on', +b.dataset.i<=S.chut[n]));
   if(CFG.bloky.every(b=>odhaleno[b.id])) vecer();
 });
+function tab(t){ document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on', b.dataset.tab===t));
+  $('#tab-tip').hidden = t!=='tip'; $('#tab-navod').hidden = t!=='navod'; window.scrollTo({top:0}); }
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-tab],[data-go]'); if(b) tab(b.dataset.tab||b.dataset.go); });
 document.addEventListener('submit', async e=>{
   const f=e.target.closest('.odem'); if(!f) return; e.preventDefault();
   const id=f.dataset.b, b=CFG.bloky.find(x=>x.id===id), kod=f.querySelector('input').value, err=$('#ch-'+id);
