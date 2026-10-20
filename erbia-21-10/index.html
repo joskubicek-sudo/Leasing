@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="cs"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Slepá degustace</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bordo:#6B1F2A;--bordo2:#4E1620;--zlata:#D9B876;--bronz:#B8863B;--krem:#F5EFE6;--papir:#FBF6EC;
+ --ink:#2A1A1C;--seda:#8A776E;--linka:#E4D6C4;--ok:#3E7B4F;--bg:#F5EFE6;--card:#FBF6EC}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Libre Baskerville',Georgia,serif;font-size:16px;line-height:1.45;padding-bottom:92px}
+header{background:var(--bordo);color:#fff;text-align:center;padding:22px 16px 18px;border-bottom:4px solid var(--zlata)}
+.znacka{font-size:11px;letter-spacing:2.6px;color:var(--zlata)}
+h1{font-size:25px;letter-spacing:5px;margin-top:8px;font-weight:700}
+.pod{font-style:italic;font-size:13.5px;color:#F1E2C6;margin-top:8px}
+main{max-width:640px;margin:0 auto;padding:0 16px}
+.karta{background:var(--card);border:1px solid var(--linka);border-radius:14px;padding:16px;margin-top:16px}
+.lbl{font-family:Poppins,sans-serif;font-weight:600;font-size:11.5px;letter-spacing:2px;color:var(--bordo);text-transform:uppercase}
+input[type=text],input[type=number]{font:inherit;font-size:17px;color:var(--ink);background:#fff;border:1.5px solid var(--bronz);
+ border-radius:10px;padding:10px 12px;width:100%;outline:none}
+input:focus{border-color:var(--bordo);box-shadow:0 0 0 3px rgba(107,31,42,.15)}
+input:disabled{background:#F1EADF;color:var(--ink);border-color:var(--linka)}
+.pravidla p{font-size:14.5px;margin-top:8px}
+.pravidla b{color:var(--bordo)}
+.blok{margin-top:22px}
+.bh{display:flex;justify-content:space-between;align-items:baseline;border-top:1.5px solid var(--bronz);padding-top:10px}
+.bh .t{font-weight:700;color:var(--bordo);letter-spacing:2.5px;font-size:15px;text-transform:uppercase}
+.bh .p{font-style:italic;color:var(--seda);font-size:13px}
+.vz{background:var(--card);border:1px solid var(--linka);border-radius:14px;padding:12px 14px;margin-top:10px}
+.vz.odhaleno{border-color:var(--bronz)}
+.r1{display:flex;align-items:center;gap:12px}
+.cis{flex:0 0 38px;height:38px;border:1.5px solid var(--bronz);border-radius:50%;display:flex;align-items:center;justify-content:center;
+ color:var(--bordo);font-weight:700}
+.jm{flex:1;min-width:0}
+.jm .n{font-weight:700;color:var(--bordo);font-size:15.5px}
+.jm .o{font-style:italic;color:var(--seda);font-size:12.5px;margin-top:2px}
+.tip{flex:0 0 128px;position:relative}
+.tip input{padding-right:34px;text-align:right}
+.tip span{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--seda);font-size:14px;pointer-events:none}
+.r2{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:10px;flex-wrap:wrap}
+.chut{display:flex;gap:6px;align-items:center}
+.chut small{font-family:Poppins,sans-serif;font-size:10.5px;letter-spacing:1.4px;color:var(--seda);margin-right:4px}
+.chut button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--bronz);background:#fff;color:var(--bordo);
+ font:inherit;font-size:13px;cursor:pointer}
+.chut button.on{background:var(--bordo);border-color:var(--bordo);color:#fff}
+.vys{font-size:14px;text-align:right}
+.vys .c{font-weight:700;color:var(--bordo)}
+.bd{display:inline-block;min-width:58px;text-align:center;border-radius:20px;padding:3px 10px;font-family:Poppins,sans-serif;font-size:12.5px;font-weight:600;margin-left:6px}
+.b3{background:var(--bordo);color:#fff}.b2{background:var(--bronz);color:#fff}.b1{background:var(--zlata);color:var(--ink)}.b0{background:#E8DED2;color:var(--seda)}
+.koupit{display:inline-block;margin-top:8px;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;color:var(--bordo);text-decoration:none;
+ border-bottom:1.5px solid var(--zlata)}
+.odem{display:flex;gap:8px;margin-top:12px}
+.odem input{flex:1;text-transform:uppercase;letter-spacing:2px}
+.btn{font-family:Poppins,sans-serif;font-weight:600;font-size:14px;border:0;border-radius:10px;padding:0 16px;background:var(--bordo);color:#fff;cursor:pointer;min-height:46px}
+.btn:active{background:var(--bordo2)}
+.chyba{color:#9B2C2C;font-size:13px;margin-top:6px;min-height:1em}
+.sum{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:14px;color:var(--seda)}
+.sum b{color:var(--bordo);font-size:16px}
+.roz .row{display:flex;gap:10px;align-items:center;margin-top:10px}
+.roz .tip{flex:1}
+.roz .vys{margin-top:10px;text-align:left}
+#vecer h2{font-size:18px;color:var(--bordo);margin-top:4px}
+#vecer ol{margin:10px 0 0 22px}
+#vecer li{margin-top:8px;font-size:14.5px}
+#vecer .velke{font-size:40px;font-weight:700;color:var(--bordo);line-height:1.1;margin-top:6px}
+.cta{display:block;text-align:center;margin-top:14px;background:var(--bordo);color:#fff;text-decoration:none;padding:14px;border-radius:10px;
+ font-family:Poppins,sans-serif;font-weight:600}
+.lista{position:fixed;left:0;right:0;bottom:0;background:var(--bordo);color:#fff;border-top:3px solid var(--zlata);
+ padding:12px 18px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:center;z-index:5}
+.lista .l{font-size:12px;letter-spacing:2px;color:var(--zlata)}
+.lista .v{font-size:22px;font-weight:700}
+.lista .v small{font-size:13px;color:#F1E2C6;font-weight:400}
+footer{text-align:center;color:var(--seda);font-size:12.5px;margin:26px 0 8px}
+footer a{color:var(--bordo)}
+@media (max-width:380px){.tip{flex-basis:112px}.cis{flex-basis:34px;height:34px}}
+</style></head>
+<body>
+<header>
+ <div class="znacka">LIKOR s.r.o. · DŮM PORTSKÉHO VÍNA</div>
+ <h1>SLEPÁ DEGUSTACE</h1>
+ <div class="pod">Za kolik se víno prodává? · ERBIA HOLDING · 21. 10. 2026</div>
+</header>
+<main>
+ <div class="karta">
+  <label class="lbl" for="jmeno">Vaše jméno</label>
+  <input id="jmeno" type="text" autocomplete="name" placeholder="Jméno a příjmení" style="margin-top:8px">
+ </div>
+ <div class="karta pravidla">
+  <div class="lbl">Pravidla</div>
+  <p>Láhve jsou zahalené. U každého vzorku napište, za kolik se víno prodává — cena za láhev 0,75 l na portske.cz. Dnešní vína stojí zhruba od 150 do 1 500 Kč.</p>
+  <p><b>Body za tip:</b> odchylka do 10 % = 3 body · do 20 % = 2 body · do 35 % = 1 bod.</p>
+  <p>Po každém bloku vyhlásíme kód. Zadáte ho — ukáže se víno, cena a vaše body. Tipy v bloku se tím uzamknou.</p>
+ </div>
+ <div id="bloky"></div>
+ <div class="karta roz" id="roz">
+  <div class="lbl">Rozstřel</div>
+  <p style="font-size:14.5px;margin-top:6px">Kolik stojí všech 12 lahví dohromady? Při shodě bodů vyhrává nejbližší tip.</p>
+  <div class="row"><div class="tip"><input id="rozTip" type="number" inputmode="numeric" min="0" placeholder="0"><span>Kč</span></div></div>
+  <div class="vys" id="rozVys"></div>
+ </div>
+ <div class="karta" id="vecer" hidden></div>
+ <footer>Dům portského vína · Radlická 3314/71, Praha 5 · <a href="https://www.portske.cz/">portske.cz</a></footer>
+</main>
+<div class="lista"><span class="l">MOJE BODY</span><span class="v" id="celkem">0 <small>/ 36</small></span></div>
+<script>
+const CFG = {"key": "dpv-menu-20261021-erbia", "iter": 150000, "pasma": [[0.1, 3], [0.2, 2], [0.35, 1]], "max": 36, "bloky": [{"id": "b1", "rim": "I.", "nazev": "Sekty", "pod": "klasická metoda · 8 °C", "cisla": [1, 2, 3], "enc": {"s": "xtWGJeAU3XAUyHegElyUFg==", "i": "hDxTGI0dqf6kDdU0", "c": "QLCBcNSqWF5ir4CDEU0vQO1mbsKh9Q8iHgGyPndqi9LaMnLUjyo/2cZPG1B7p3H7evd5KvynsmZrzs7yqurYZ3AAQI8fb/4uGJTfISuLsOmCo9uz12vf7mYde8oEpPbln1wMeHhj1bOWd2JG4ueIA2YKZbqKYLjn/gjFyQqg23soLdqVG5zCvOw69nFE98Xt/ufW0hQTpSweCCHTZGQeaASbO/Y1dJcg2gN5mTQwPxSlEN+fPeTI7bspaPmFHjZUdtcGMwjb8DTDOeA4aeYquubeCi22dlScB1Ow1ky2qdPV/s6pTx+7zWovSBrp4xjffeXYOWGM0PYEuQgUE67sxhWwJNj8tZyqwLDyQFB7f3KIYbVgAeSo0SpSR+nxN190fZVNRIoFYj2EQsVtI/qfEyzs6lfI8iXaAdFc+XuuZiWJdx97ptn3MEkps360CzTY2AcwsBjt8sc2zeq8SSRgquwlsQTCtgVEYcikK7A3Qye/uEIaMvpKms9t7lDtaUUJ72Ibsr7y3IkyKwMskWmud/w8TozHF2H4lgz9xzhdCGEX4n1Uo4craEC9YbZ/iTaKpL23TmhrY8d0zaAvsMOP1i6B5kM9IDMtoIid86pAg4N92RirSEenhlV3q3sfINnzCKAKg7xbEkU+yR7Kn7LK/15xxPZ8yrhpT+mprWrPc3WO2U6oDKCwcOncfuGxhDeVviA7pWtO6bzNvtw9aaM2ZcRa4IunFCd7TvGZlAGnoVew2gtFEnigHWeIdTTWu3A="}}, {"id": "b2", "rim": "II.", "nazev": "Bílá", "pod": "10–12 °C", "cisla": [4, 5, 6], "enc": {"s": "UH7QZHoVSB5Be53ADbEPIQ==", "i": "NyaPSeeut+hts/PK", "c": "b3pGRTN7hh8yL7BaYs0ABfwpcTd9i/SmPyYmS1sQX90Wk3qMRcHXq4DChB+Y2e+mr/Y8aIVE8977bpKO4rcZK8U5W9mtCyrdkyLg2zefJstl6B5S6kLtWMJYzKFUoUoSYdr5x8He/KhME1Y3Pb7xNMQKTZQDOAb/gw709IqcibfdQa2zK5dwcwLKc4tIoqYPqa+it5ZXDT87jUR9oy1xtAzY1FOg2ipfrerd/WfL+P6Ri2du0Ux08mzbk6u0QatE+JIf/ShHRTl5zyH/offmbPnrlvEMJZWagFthepWUH+zPe/wQfb25BT07LxtGKOeWH2rWTgHlRBNcM3iRiKrwwQN8L7xkOWte08seHpbw5CIStSZkd6B7S9ZQwPHLRYyUu6Jq8jAer86s7AwnHFP6D+92qJ3qNr98MygSXSUVudqHLHyXp5AnKxAtwPs5KcSJ3RVIMhWaGSnkbIeVJ6Je+sJdcB1zUqsxWK4ixBmOyu6y9vJVi984jZ5y4TJQHuEvdIw8dhUmfFxVMCqp3e7ZPVJBhvXnvuyUrfuwTubdFViVjd3p1Fll0SxhYGey6dV9ZD279KJP5C0hVvqyY0ai3T/m5fV5fJ2RWN/BtPK2SH2FMAt9ls6LLVRbtHXq2TDyfbGJKAOdVtF5Ag/rL/iz4+SZE4RQD4D+vlncc3OVaHFfsNz6u2faahue5TbMT3yp08dbJuwPXW7JRj4KevYvPSkf4YTsUEZlIgxIY7cxrcub/J1IW7X38thxZlBhj5tsHl/AzA4TjRcXpiKpHEMWk+C9zXRfJuTXU74V+r6qWkPwrVAZhzGQLu3LeBHwmNg+zGQodpbO8qR2k9sIZmJzkFuyVPc8"}}, {"id": "b3", "rim": "III.", "nazev": "Červená", "pod": "16–18 °C", "cisla": [7, 8, 9, 10, 11, 12], "enc": {"s": "URdrxEOF/yHa/5rQqA0Hhg==", "i": "xkZxV0jTVwS+PoEo", "c": "gvjW4MT2tkq/y35Hgzx+2tz+ly8Z7RhvfJWnNj5Hid6bV8A1HDC589h77RaiYhtLCX0J0UPNM0kKfKQV+maJ/KGvQnmdKAuenoVVNsOykZU5VwPLA3CYBI8v6gXFR2uMuK7VoUBcxPXZQG8tjOSzB4Uxk2ihOj/jOSKFvmN1uZO4XvX9ZwOPnNe+QylCA0FshZCPd+JUZPhlljdQshP4aBwe6zPa5pJBeOslO/LvLxS/Y+0NBHRB2YpDbkIv6pwFWAxtPjOpJcTEKp39Eo8jML2g28ul3r8YCIq9twLXpuhedE7Xf8HnKkQjPXi4uA5IKGsTWNYPhbiGWkmChlQKsU/i7iR34woEksy+rjMIMo8kdFM4TzLplsRqT6kouba0LHa3OMOhHbc5gyTqRnQLNB/lYdDWgls+Nl3bEjkYV2yVRbR3F/MZ5+hZdsqdAjYfYK6OP49RssJ3CwdispASYnMYT75SWPOQDfARPwD/pcVUxrFCgsv2tmaEifHUVFF/qFdy9HlrhYINXXGotgceVrn/32uuIs5sAQ+oYiha9ELQwSGJGxqqaub5hFGyL/txOl2E/dozOQPKWSWl8RUxTKC1O/eKMg4hn7eYX2eSYRJyG1V47Dyhm/3lgfj1hT4MG4PToHT80KOWYQOwiH7ux1NhMQP4Sb7eoCNXeNn7AMxuGEh8G3hE0+XtQ7t97I7k0KDubc3YOIOoy67F28QnYNBq2jdhkf19DBqTOgCwaNCzW6Ji+x+3hyiwikenh1LWNf9qMZyIR1G1WmpU815NMla19oh7lonYDFnihYEhRhptHBhrJXyms2XhYHnxY2H0mw/9TbEyHrN8nf//ktOAAH0F3uQ6+RP78kcb1JLeJjtJrcvi/rKbKHNf64QPYtemsz7G628TlAKizm0mY7Oth0Uu4ZMowugiC3VgDJ/di1ucmIHINOU6yVHrKR1UddBiKRsTqk2QS5pOEt5eDymoa1uiPcK1tz3r42/btRoXhD1YrgXtFoF7/H68D2hGXaQQrcTbq1kyS3r6nVhTb6yEc0Tx8PYxFH71SyvqZX+QgGi53E6zpbTdl5XHgnhaYfPqEq8uxT3W4VhlbuPlhoF/bP8OhLhw2SLNVOK64cX19qB38jXOe753WwFq9woIFKHBYF6oyieMqeotjDQMLv+IMJwRvOyip2SmO2UmZD/T0jIzevqCkLLJtOKFbvCQK2L3+5DAg+FULB2CLJchcmPn6t05SBEgJgNmkUcwtdKINxVxTjX0QKAjvL9S5lXfzfJFYF10v1EfCv+kEp9tO6LTkf21osowpnSLezNXBHimRAMoUAU8DewV9bBeXeBcnE9ckP/JBbjPrNPljWKZs3kerYzm89ftKuWy++T6Ngc4yZJCrclBi/fYOCWsoLIXDiGtYB46UHYB1Y9k8BHzVQmY+vbaRM9H40ebMHNqEYFn++ES8DAeVkIcWI6Df/lWHLTujU5V/i9EVcWNq5g2dGstcNnDeH6dpNL5cvCIO4dvEGrukpOqkKro3aNOvhLfcnNKI0112kBroapy1uNW06WQ3zvEqB70uYDjhTRzmVLQ/UcsietvlXVArJ6GI2oCn3klH27eBlFC+VO+cA=="}}]};
+let S = {jmeno:'', tip:{}, chut:{}, rozTip:'', kody:{}};
+try{ const raw = localStorage.getItem(CFG.key); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
+const save = () => { try{ localStorage.setItem(CFG.key, JSON.stringify(S)); }catch(e){} };
+const odhaleno = {};   // id bloku -> payload
+const $ = s => document.querySelector(s);
+const fmt = n => n.toLocaleString('cs-CZ').replace(/ /g,' ');
+const norm = k => k.normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/\s+/g,'');
+const ub64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+function body(tip, cena){ if(!(tip>0)) return 0; const d=Math.abs(tip-cena)/cena;
+  for(const [lim,b] of CFG.pasma) if(d<=lim+1e-9) return b; return 0; }
+function slovo(b){ return b===1?'bod':(b>=2&&b<=4?'body':'bodů'); }
+
+async function desifruj(enc, kod){
+  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(norm(kod)), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:ub64(enc.s), iterations:CFG.iter, hash:'SHA-256'},
+     km, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  const pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:ub64(enc.i)}, key, ub64(enc.c));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+function vykresli(){
+  const box = $('#bloky'); box.innerHTML='';
+  for(const b of CFG.bloky){
+    const p = odhaleno[b.id];
+    const el = document.createElement('section'); el.className='blok';
+    let h = `<div class="bh"><span class="t">${b.rim} ${b.nazev}</span><span class="p">${b.pod}</span></div>`;
+    let soucet = 0;
+    for(const n of b.cisla){
+      const v = p ? p.vina.find(x=>x.n===n) : null;
+      const t = S.tip[n] ?? '';
+      const ch = S.chut[n] || 0;
+      let r2 = `<div class="chut"><small>CHUŤ</small>${[1,2,3,4,5].map(i=>`<button type="button" data-n="${n}" data-i="${i}" class="${i<=ch?'on':''}" aria-label="chuť ${i}">${i}</button>`).join('')}</div>`;
+      if(v){ const bb=body(+t, v.cena); soucet+=bb;
+        r2 += `<div class="vys">cena <span class="c">${fmt(v.cena)} Kč</span><span class="bd b${bb}">${bb} ${slovo(bb)}</span></div>`; }
+      h += `<div class="vz ${v?'odhaleno':''}"><div class="r1"><div class="cis">${n}</div>
+        <div class="jm">${v?`<div class="n">${v.nazev}</div><div class="o">${v.puvod}</div>`:`<div class="n">Vzorek ${n}</div><div class="o">zahaleno</div>`}</div>
+        <div class="tip"><input type="number" inputmode="numeric" min="0" placeholder="tip" data-tip="${n}" value="${t}" ${v?'disabled':''}><span>Kč</span></div></div>
+        <div class="r2">${r2}</div>${v?`<a class="koupit" href="${v.url}" target="_blank" rel="noopener">Koupit na portske.cz</a>`:''}</div>`;
+    }
+    if(p) h += `<div class="sum"><span>Body za blok</span><b>${soucet} / ${b.cisla.length*3}</b></div>`;
+    else h += `<form class="odem" data-b="${b.id}"><input type="text" autocomplete="off" autocapitalize="characters" placeholder="kód bloku" aria-label="kód bloku ${b.rim}"><button class="btn">Odhalit ceny</button></form><div class="chyba" id="ch-${b.id}"></div>`;
+    el.innerHTML = h; box.appendChild(el);
+  }
+  // rozstrel
+  const last = CFG.bloky[CFG.bloky.length-1], pl = odhaleno[last.id];
+  $('#rozTip').value = S.rozTip; $('#rozTip').disabled = !!pl;
+  $('#rozVys').innerHTML = pl ? `Skutečnost <b style="color:var(--bordo)">${fmt(pl.soucet)} Kč</b>` +
+     (S.rozTip!==''?` · váš tip je vedle o <b>${fmt(Math.abs(+S.rozTip-pl.soucet))} Kč</b>`:'') : '';
+  prepocet(); vecer();
+}
+
+function prepocet(){
+  let c=0; for(const b of CFG.bloky){ const p=odhaleno[b.id]; if(p) for(const v of p.vina) c+=body(+(S.tip[v.n]??0), v.cena); }
+  $('#celkem').innerHTML = `${c} <small>/ ${CFG.max}</small>`; return c;
+}
+
+function vecer(){
+  const vse = CFG.bloky.every(b=>odhaleno[b.id]); const el=$('#vecer'); el.hidden=!vse; if(!vse) return;
+  const vina = CFG.bloky.flatMap(b=>odhaleno[b.id].vina);
+  const top = vina.filter(v=>S.chut[v.n]).sort((a,b)=>(S.chut[b.n]-S.chut[a.n])||(a.n-b.n));
+  const nejbl = vina.filter(v=>+S.tip[v.n]>0).sort((a,b)=>Math.abs(S.tip[a.n]-a.cena)/a.cena-Math.abs(S.tip[b.n]-b.cena)/b.cena)[0];
+  el.innerHTML = `<div class="lbl">Můj večer${S.jmeno?' · '+S.jmeno.replace(/</g,''):''}</div>
+    <div class="velke">${prepocet()} <span style="font-size:18px;color:var(--seda)">/ ${CFG.max} bodů</span></div>
+    ${S.rozTip!==''?`<p style="font-size:14px;margin-top:4px">Rozstřel: ${fmt(+S.rozTip)} Kč</p>`:''}
+    ${nejbl?`<p style="font-size:14px;margin-top:10px">Nejlepší odhad: <b>${nejbl.nazev}</b> — tip ${fmt(+S.tip[nejbl.n])} Kč, cena ${fmt(nejbl.cena)} Kč.</p>`:''}
+    ${top.length?`<h2 style="margin-top:16px">Co mi chutnalo nejvíc</h2><ol>${top.slice(0,5).map(v=>`<li><b>${v.nazev}</b> · ${S.chut[v.n]}/5 · ${fmt(v.cena)} Kč<br><a class="koupit" href="${v.url}" target="_blank" rel="noopener">Koupit na portske.cz</a></li>`).join('')}</ol>`:'<p style="font-size:14px;margin-top:10px">Ohodnoťte chuť kolečky 1–5 a uvidíte tu své favority.</p>'}
+    <a class="cta" href="https://www.portske.cz/" target="_blank" rel="noopener">Všechna vína na portske.cz</a>`;
+}
+
+document.addEventListener('input', e=>{
+  const t=e.target;
+  if(t.dataset.tip){ S.tip[t.dataset.tip]=t.value; save(); }
+  else if(t.id==='jmeno'){ S.jmeno=t.value; save(); }
+  else if(t.id==='rozTip'){ S.rozTip=t.value; save(); }
+});
+document.addEventListener('click', e=>{
+  const t=e.target.closest('.chut button'); if(!t) return;
+  const n=t.dataset.n, i=+t.dataset.i; S.chut[n] = (S.chut[n]===i?0:i); save();
+  t.parentElement.querySelectorAll('button').forEach(b=>b.classList.toggle('on', +b.dataset.i<=S.chut[n]));
+  if(CFG.bloky.every(b=>odhaleno[b.id])) vecer();
+});
+document.addEventListener('submit', async e=>{
+  const f=e.target.closest('.odem'); if(!f) return; e.preventDefault();
+  const id=f.dataset.b, b=CFG.bloky.find(x=>x.id===id), kod=f.querySelector('input').value, err=$('#ch-'+id);
+  if(!kod.trim()) return;
+  err.textContent='Ověřuji…';
+  try{
+    const data = await desifruj(b.enc, kod);
+    const prazdne = b.cisla.filter(n=>!(+S.tip[n]>0));
+    if(prazdne.length && !confirm(`U vzorku ${prazdne.join(', ')} chybí tip. Odhalit i tak? Tipy se pak už nedají změnit.`)){ err.textContent=''; return; }
+    odhaleno[id] = data; S.kody[id]=kod; save(); vykresli();
+  }catch(x){ err.textContent = window.isSecureContext ? 'Kód nesedí. Zkuste to znovu.' : 'Stránku otevřete přes https odkaz z QR kódu.'; }
+});
+
+(async()=>{
+  $('#jmeno').value = S.jmeno || '';
+  for(const b of CFG.bloky){ const k=S.kody[b.id]; if(k){ try{ odhaleno[b.id]=await desifruj(b.enc,k); }catch(e){ delete S.kody[b.id]; } } }
+  vykresli();
+})();
+</script>
+</body></html>
